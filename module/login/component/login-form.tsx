@@ -5,14 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
 import EmailField from "./email-field";
 import PasswordField from "./password-field";
+import { useLogin } from "../hook/UserLogin";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
+  const { login, isPending } = useLogin();
+
+  async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire up to auth mutation
+    const {data} = await login({email,password});
+    console.log(data);
   }
 
   return (

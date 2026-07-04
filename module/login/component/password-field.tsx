@@ -16,12 +16,6 @@ export default function PasswordField({ value, onChange }: PasswordFieldProps) {
         >
           Password
         </FieldLabel>
-        <a
-          href="#"
-          className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-        >
-          Forgot password?
-        </a>
       </div>
       <Input
         id="password"
