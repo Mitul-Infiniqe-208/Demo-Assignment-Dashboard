@@ -1,6 +1,7 @@
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import type { UseFormRegisterReturn } from "react-hook-form";
+import { FlexRow } from "@/components/common/flex-row";
 
 interface PasswordFieldProps {
   register: UseFormRegisterReturn;
@@ -10,14 +11,14 @@ interface PasswordFieldProps {
 export default function PasswordField({ register, error }: PasswordFieldProps) {
   return (
     <Field data-invalid={!!error}>
-      <div className="flex items-center justify-between">
+      <FlexRow align="center" justify="between">
         <FieldLabel
           htmlFor="password"
           className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
         >
           Password
         </FieldLabel>
-      </div>
+      </FlexRow>
       <Input
         id="password"
         type="password"
