@@ -30,6 +30,7 @@ export interface IUser {
   image: string | null;
 
   isAuthorizedDealer: boolean;
+  canAuthorizedDealerUpdateRate: boolean;
   salePersonId: string;
   referenceCode: string;
 
