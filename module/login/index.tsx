@@ -1,5 +1,5 @@
-import LoginHeader from "./component/login-header";
-import LoginForm from "./component/login-form";
+import LoginHeader from "./components/login-header";
+import LoginForm from "./components/login-form";
 import { FlexRow } from "@/components/common/flex-row";
 
 export default function Login() {

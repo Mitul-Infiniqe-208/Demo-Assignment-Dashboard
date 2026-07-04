@@ -1,4 +1,4 @@
-import { Employee } from "./employee";
+import { Employee } from "./employees";
 
 export interface IUserRole {
   name: string;

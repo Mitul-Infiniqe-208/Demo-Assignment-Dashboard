@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { useMe } from "../hook/useMe";
+import { useMe } from "../hooks/useMe";
 import { AccountManagerCard } from "./account-manager-card";
 import { AccountPermissionsCard } from "./account-permissions-card";
 import { CompanyDetailsCard } from "./company-details-card";

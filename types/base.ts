@@ -13,3 +13,15 @@ export interface Meta {
     offset: number;
     totalPages: number;
 }
+
+  export interface BaseParams {
+    offset?: number;
+    limit?: number;
+    search?: string;
+    searchText?: string;
+    isActive?: boolean;
+    sortBy?: string;
+    sortOrder?: SortOrder;
+  }
+
+  export type SortOrder = "ASC" | "DESC";
