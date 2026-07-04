@@ -1,10 +1,23 @@
 import Cookies from "js-cookie";
 
-const TOKEN_KEY = "token";
+const ACCESS_TOKEN_KEY = "accessToken";
+const REFRESH_TOKEN_KEY = "refreshToken";
+
+const cookieOptions = (): Cookies.CookieAttributes => ({
+  expires: 7,
+  path: "/",
+  sameSite: "lax",
+});
 
 export const authCookies = {
-  setToken: (token: string) =>
-    Cookies.set(TOKEN_KEY, token, { expires: 7, sameSite: "strict" }),
-  getToken: () => Cookies.get(TOKEN_KEY),
-  removeToken: () => Cookies.remove(TOKEN_KEY),
+  setTokens: (accessToken: string, refreshToken: string) => {
+    Cookies.set(ACCESS_TOKEN_KEY, accessToken, cookieOptions());
+    Cookies.set(REFRESH_TOKEN_KEY, refreshToken, cookieOptions());
+  },
+  getAccessToken: () => Cookies.get(ACCESS_TOKEN_KEY),
+  getRefreshToken: () => Cookies.get(REFRESH_TOKEN_KEY),
+  clear: () => {
+    Cookies.remove(ACCESS_TOKEN_KEY, { path: "/" });
+    Cookies.remove(REFRESH_TOKEN_KEY, { path: "/" });
+  },
 };

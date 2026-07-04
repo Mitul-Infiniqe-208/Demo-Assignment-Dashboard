@@ -16,7 +16,6 @@ export default function LoginForm() {
   async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const {data} = await login({email,password});
-    console.log(data);
   }
 
   return (
@@ -27,6 +26,7 @@ export default function LoginForm() {
 
         <Field className="mt-4">
           <Button
+            disabled={isPending}
             type="submit"
             className="w-full rounded-none bg-foreground text-background hover:bg-foreground/90"
           >
