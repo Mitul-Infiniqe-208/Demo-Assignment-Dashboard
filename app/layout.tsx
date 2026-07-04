@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/providers/app-provider";
-import { DashboardShell } from "@/module/dashboard/components/dashboard-shell";
+import { DashboardShell } from "@/components/common/dashboard-shell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
 
   return (
     <html

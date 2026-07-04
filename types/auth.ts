@@ -10,3 +10,10 @@ export interface LoginResponse {
 
 export interface AuthContextType{
 }
+
+export interface RefreshTokenRequest {
+  refreshToken: string;
+}
+export interface RefreshTokenResponse {
+  accessToken: string;
+}

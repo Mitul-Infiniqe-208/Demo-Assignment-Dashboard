@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { SidebarNavItem } from "./sidebar-nav-item";
 import { LayoutDashboard, Users, User, type LucideIcon } from "lucide-react";
+import { SidebarNavItem } from "./sidebar-nav-item";
 
 
 interface SidebarNavProps {
@@ -22,7 +22,6 @@ export function SidebarNav({ onNavigate }: SidebarNavProps) {
   const navItems: NavItem[] = [
     { label: "Dashboard", href: "/", icon: LayoutDashboard },
     { label: "Employees", href: "/employees", icon: Users },
-    { label: "Profile", href: "/profile", icon: User },
   ];
 
   return (
