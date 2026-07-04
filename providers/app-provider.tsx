@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -24,6 +25,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
         {children}
+        <Toaster closeButton={true} position="top-right" />
     </QueryClientProvider>
   );
 };

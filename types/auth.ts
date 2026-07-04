@@ -3,3 +3,5 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface AuthContextType{
+}
