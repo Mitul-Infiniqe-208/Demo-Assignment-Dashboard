@@ -2,7 +2,7 @@ import { authCookies } from "@/lib/cookies";
 import { login } from "@/services/auth";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 export const useLogin = () => {
     const router = useRouter();
@@ -12,7 +12,7 @@ export const useLogin = () => {
             if (data?.status && data?.data?.accessToken) {
                 authCookies.setTokens(data.data.accessToken, data.data.refreshToken);
                 toast.success('Login Successful');
-                router.push('/dashboard');
+                router.push('/');
             } else {
                 toast.error('Failed to Login', {
                     description: data?.message || 'Please try again.',

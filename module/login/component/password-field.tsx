@@ -1,14 +1,15 @@
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import type { UseFormRegisterReturn } from "react-hook-form";
 
 interface PasswordFieldProps {
-  value: string;
-  onChange: (value: string) => void;
+  register: UseFormRegisterReturn;
+  error?: string;
 }
 
-export default function PasswordField({ value, onChange }: PasswordFieldProps) {
+export default function PasswordField({ register, error }: PasswordFieldProps) {
   return (
-    <Field>
+    <Field data-invalid={!!error}>
       <div className="flex items-center justify-between">
         <FieldLabel
           htmlFor="password"
@@ -22,11 +23,11 @@ export default function PasswordField({ value, onChange }: PasswordFieldProps) {
         type="password"
         autoComplete="current-password"
         placeholder="••••••••"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
+        aria-invalid={!!error}
         className="rounded-none border-x-0 border-t-0 border-b border-border px-0 shadow-none focus-visible:border-foreground focus-visible:ring-0"
-        required
+        {...register}
       />
+      <FieldError errors={error ? [{ message: error }] : undefined} />
     </Field>
   );
 }
