@@ -22,6 +22,7 @@ export function SidebarHeader({ onClose }: SidebarHeaderProps) {
         size="icon"
         onClick={onClose}
         aria-label="Close menu"
+        className="lg:hidden"
       >
         <X className="size-5" />
       </Button>

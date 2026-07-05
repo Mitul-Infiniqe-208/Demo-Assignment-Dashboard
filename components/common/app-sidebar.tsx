@@ -14,11 +14,12 @@ interface AppSidebarProps {
 export function AppSidebar({ open, onClose }: AppSidebarProps) {
   return (
     <>
-      {open && <SidebarOverlay onClose={onClose} />}
+      {open && <SidebarOverlay onClose={onClose} className="lg:hidden" />}
 
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-50 flex w-64 shrink-0 flex-col border-r border-border bg-background transition-transform duration-200",
+          "lg:static lg:z-0 lg:translate-x-0",
           open ? "translate-x-0" : "-translate-x-full"
         )}
       >

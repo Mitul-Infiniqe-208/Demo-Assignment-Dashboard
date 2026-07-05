@@ -21,6 +21,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
             size="icon-lg"
             onClick={() => setOpen((prev) => !prev)}
             aria-label={open ? "Close menu" : "Open menu"}
+            className="lg:hidden"
           >
             <Menu className="size-5" />
           </Button>
