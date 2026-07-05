@@ -19,7 +19,7 @@ export function SidebarLogoutButton() {
         type="button"
         variant="ghost"
         onClick={handleLogout}
-        className="w-full justify-start gap-3 px-3 text-muted-foreground"
+        className="w-full cursor-pointer justify-start gap-3 px-3 text-muted-foreground"
       >
         <LogOut className="size-4" />
         Logout
