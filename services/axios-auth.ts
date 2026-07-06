@@ -13,7 +13,6 @@ export const handleRefreshToken = async (
     if (!refreshToken) {
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
-      window.location.href = "/send-otp";
       return;
     }
 
@@ -52,7 +51,6 @@ export const handleRefreshToken = async (
     if (status === 400 || status === 401) {
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
-      window.location.href = "/send-otp";
       return;
     }
 

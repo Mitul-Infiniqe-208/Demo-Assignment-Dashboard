@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import type { flexVariants } from "./flex-variants";
+import type { flexVariants } from "../constants/flex-variants";
 
 export type FlexJustify = VariantProps<typeof flexVariants>["justify"];
 export type FlexAlign = VariantProps<typeof flexVariants>["align"];

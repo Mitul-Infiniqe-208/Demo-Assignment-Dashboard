@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { flexVariants } from "../../types/flex-variants";
+import { flexVariants } from "../../constants/flex-variants";
 import type { FlexOwnProps } from "../../types/flex-types";
 
 export interface FlexRowProps
