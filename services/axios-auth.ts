@@ -1,7 +1,7 @@
 import { env } from "@/constants/config";
 import { refreshToken as refreshTokenRequest } from "@/services/auth";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import { deleteCookie, getCookie, getCookies, setCookie } from "cookies-next";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 
 export const handleRefreshToken = async (
   error: AxiosError,
