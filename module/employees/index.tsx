@@ -5,6 +5,7 @@ import { useDebounce } from "@/hooks/use-debounce";
 import { GetEmployeesParams } from "@/types/employees";
 import { OnChangeFn, SortingState } from "@tanstack/react-table";
 import { useCallback, useMemo, useState } from "react";
+import AddEmployeeDialog from "./components/add-employee-dialog";
 import EmployeesPagination from "./components/employees-pagination";
 import EmployeesSearch from "./components/employees-search";
 import EmployeesTable from "./components/employees-table";
@@ -63,6 +64,8 @@ export default function Employees() {
           onPageChange={setCurrentPage}
         />
       ) : null}
+
+      <AddEmployeeDialog />
     </FlexCol>
   );
 }

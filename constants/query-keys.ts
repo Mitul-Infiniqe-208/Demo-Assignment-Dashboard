@@ -8,4 +8,7 @@ export const queryKeys = {
     all: () => ["employees"] as const,
     list: (params: GetEmployeesParams) => ["employees", "list", params] as const,
   },
+  employeeRoles: {
+    all: () => ["employeeRoles"] as const,
+  },
 };

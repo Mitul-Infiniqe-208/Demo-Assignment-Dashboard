@@ -25,8 +25,10 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { ChevronDown, ChevronUp, ChevronsUpDown, Users } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useToggleEmployeeStatus } from "../hooks/useToggleEmployeeStatus";
+import AddEmployeeDialog from "./add-employee-dialog";
+import DeleteEmployeeDialog from "./delete-employee-dialog";
 import { getEmployeesColumns } from "./employees-columns";
 
 interface EmployeesTableProps {
@@ -45,12 +47,16 @@ export default function EmployeesTable({
   onSortingChange,
 }: EmployeesTableProps) {
   const { toggleEmployeeStatus, togglingId } = useToggleEmployeeStatus();
+  const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
+  const [deletingEmployee, setDeletingEmployee] = useState<Employee | null>(null);
 
   const columns = useMemo(
     () =>
       getEmployeesColumns({
         onToggleStatus: toggleEmployeeStatus,
         togglingId,
+        onEdit: setEditingEmployee,
+        onDelete: setDeletingEmployee,
       }),
     [toggleEmployeeStatus, togglingId],
   );
@@ -66,6 +72,7 @@ export default function EmployeesTable({
   });
 
   return (
+    <>
     <div className="rounded-lg border">
       <Table>
         <TableHeader>
@@ -142,5 +149,23 @@ export default function EmployeesTable({
         </TableBody>
       </Table>
     </div>
+
+    <AddEmployeeDialog
+      mode="edit"
+      employee={editingEmployee}
+      open={!!editingEmployee}
+      onOpenChange={(next) => {
+        if (!next) setEditingEmployee(null);
+      }}
+    />
+
+    <DeleteEmployeeDialog
+      employee={deletingEmployee}
+      open={!!deletingEmployee}
+      onOpenChange={(next) => {
+        if (!next) setDeletingEmployee(null);
+      }}
+    />
+    </>
   );
 }
