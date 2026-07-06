@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 import { FlexRow } from "@/components/common/flex-row";
 import { FlexCol } from "@/components/common/flex-col";
 import { Button } from "@/components/ui/button";
-import { AppSidebar } from "./app-sidebar";
+import { AppSidebar } from "../../../components/common/app-sidebar";
 
 export function DashboardShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);

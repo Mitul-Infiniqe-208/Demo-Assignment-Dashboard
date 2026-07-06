@@ -1,4 +1,4 @@
-import { env } from "@/lib/config";
+import { env } from "@/constants/config";
 import axios from "axios";
 
 const CLIENT_ID = env.clientId;

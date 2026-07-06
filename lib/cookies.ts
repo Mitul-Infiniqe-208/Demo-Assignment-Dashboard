@@ -1,23 +1,37 @@
-import Cookies from "js-cookie";
+import { deleteCookie, getCookie, getCookies, setCookie } from "cookies-next";
 
 const ACCESS_TOKEN_KEY = "accessToken";
 const REFRESH_TOKEN_KEY = "refreshToken";
+const MAX_AGE_ACCESS_TOKEN = 60 * 60; 
+const MAX_AGE_REFRESH_TOKEN = 60 * 60 * 24 * 7; 
 
-const cookieOptions = (): Cookies.CookieAttributes => ({
-  expires: 7,
-  path: "/",
-  sameSite: "lax",
-});
+  const getCookieSafeOptions = () => {
+    const isSecure =
+      typeof window !== "undefined" && window.location.protocol === "https:";
+
+    return {
+      path: "/",
+      secure: isSecure,
+      sameSite: "lax" as const,
+    };
+  };
 
 export const authCookies = {
   setTokens: (accessToken: string, refreshToken: string) => {
-    Cookies.set(ACCESS_TOKEN_KEY, accessToken, cookieOptions());
-    Cookies.set(REFRESH_TOKEN_KEY, refreshToken, cookieOptions());
+    setCookie(ACCESS_TOKEN_KEY, accessToken, {
+      maxAge: MAX_AGE_ACCESS_TOKEN,
+      ...getCookieSafeOptions()
+    });
+
+    setCookie(REFRESH_TOKEN_KEY, refreshToken, {
+      maxAge: MAX_AGE_REFRESH_TOKEN,
+      ...getCookieSafeOptions()
+    });
   },
-  getAccessToken: () => Cookies.get(ACCESS_TOKEN_KEY),
-  getRefreshToken: () => Cookies.get(REFRESH_TOKEN_KEY),
+  getAccessToken: () => getCookie(ACCESS_TOKEN_KEY),
+  getRefreshToken: () => getCookie(REFRESH_TOKEN_KEY),
   clear: () => {
-    Cookies.remove(ACCESS_TOKEN_KEY, { path: "/" });
-    Cookies.remove(REFRESH_TOKEN_KEY, { path: "/" });
+    deleteCookie(ACCESS_TOKEN_KEY, { path: "/" });
+    deleteCookie(REFRESH_TOKEN_KEY, { path: "/" });
   },
 };

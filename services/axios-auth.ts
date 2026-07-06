@@ -1,4 +1,4 @@
-import { env } from "@/lib/config";
+import { env } from "@/constants/config";
 import { refreshToken as refreshTokenRequest } from "@/services/auth";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import Cookies from "js-cookie";
