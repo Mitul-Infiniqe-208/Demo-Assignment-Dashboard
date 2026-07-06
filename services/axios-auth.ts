@@ -1,18 +1,18 @@
 import { env } from "@/constants/config";
 import { refreshToken as refreshTokenRequest } from "@/services/auth";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import Cookies from "js-cookie";
+import { deleteCookie, getCookie, getCookies, setCookie } from "cookies-next";
 
 export const handleRefreshToken = async (
   error: AxiosError,
 ): Promise<AxiosResponse | void> => {
   try {
-    
-    const refreshToken = Cookies.get("refreshToken");
+  
+    const refreshToken = getCookie("refreshToken");
 
     if (!refreshToken) {
-      Cookies.remove("accessToken");
-      Cookies.remove("refreshToken");
+      deleteCookie("accessToken");
+      deleteCookie("refreshToken");
       return;
     }
 
@@ -26,13 +26,10 @@ export const handleRefreshToken = async (
       throw new Error("Invalid refresh token response");
     }
 
-    Cookies.set("accessToken", tokens.accessToken, {
+    setCookie("accessToken", tokens.accessToken, {
       path: "/",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24 * 7, 
     });
-
-    console.log(tokens, "tokens");
-    console.log(response, "response");
 
     const originalConfig = error.config as AxiosRequestConfig;
 
@@ -49,8 +46,8 @@ export const handleRefreshToken = async (
     const status = err?.response?.status;
 
     if (status === 400 || status === 401) {
-      Cookies.remove("accessToken");
-      Cookies.remove("refreshToken");
+      deleteCookie("accessToken");
+      deleteCookie("refreshToken");
       return;
     }
 
@@ -63,7 +60,7 @@ const axiosAuth = axios.create({
 });
 
 axiosAuth.interceptors.request.use((config) => {
-  const token = Cookies.get("accessToken");
+  const token = getCookie("accessToken");
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
