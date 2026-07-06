@@ -2,6 +2,7 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
 import EmailField from "./email-field";
@@ -40,7 +41,8 @@ export default function LoginForm() {
             disabled={isPending}
             className="w-full rounded-none bg-foreground text-background hover:bg-foreground/90"
           >
-            Sign in
+            {isPending && <Loader2Icon className="animate-spin" />}
+            {isPending ? "Signing in..." : "Sign in"}
           </Button>
           <FieldDescription className="text-center">
             Trouble signing in? Contact your administrator.
